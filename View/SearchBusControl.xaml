@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="BakuBus.View.SearchBusControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BakuBus.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="162" d:DesignWidth="450">
+
+    <Grid Background="White">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Content="Line no" VerticalAlignment="Center" Padding="10" FontSize="18"/>
+
+        <ComboBox Name="cmbBox" Grid.Row="1" Margin="10"  ItemsSource="{Binding vs}"/>
+
+        <Button Grid.Row="2" Background="Red" Width="96" Height="32" HorizontalAlignment="Right" Margin="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="Search" Foreground="White"/>
+                <Image Grid.Column="1"
+                       Width="16" Height="16"
+                       Source="/Resources/Lupa.png" 
+                       HorizontalAlignment="Right"/>
+            </Grid>
+        </Button>
+
+    </Grid>
+
+</UserControl>
