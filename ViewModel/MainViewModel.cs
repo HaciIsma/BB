@@ -3,8 +3,10 @@ using BakuBus.Services;
 using Microsoft.Maps.MapControl.WPF;
 using PropertyChanged;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Configuration;
+using System.Windows.Documents;
 using System.Windows.Threading;
 
 namespace BakuBus.ViewModel
@@ -17,11 +19,15 @@ namespace BakuBus.ViewModel
 
         private BakuBusService _busService;
 
+        public List<Bus> BusList { get; set; }
+
         public MainViewModel()
         {
             Provider = new ApplicationIdCredentialsProvider(ConfigurationManager.AppSettings["ApiKey"]);
             _busService = new BakuBusService();
             Buses = new ObservableCollection<Bus>(_busService.GetAllBuses());
+
+            BusList = _busService.BB;
 
             var timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(10);

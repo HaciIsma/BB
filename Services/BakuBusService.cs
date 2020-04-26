@@ -8,6 +8,7 @@ namespace BakuBus.Services
 {
     public class BakuBusService
     {
+        public List<Bus> BB { get; set; }
         public IEnumerable<Bus> GetAllBuses()
         {
             var client = new HttpClient();
@@ -36,28 +37,16 @@ namespace BakuBus.Services
 
                 buses.Add(b);
             }
+            BB = buses;
 
             return buses;
         }
 
-        public List<Bus> AllBuses { get; set; } = new List<Bus>();
-        public List<Bus> BusesForRouteCode { get; set; } = new List<Bus>();
+        
+        
         public IEnumerable<Bus> GetAllBusesByRouteCode(string routeCode)
         {
-            BusesForRouteCode.Clear();
-
-            if (routeCode == "ümumi siyahı") return AllBuses;
-            else
-            {
-                foreach (var item in AllBuses)
-                {
-                    if (item.RouteCode == routeCode)
-                    {
-                        BusesForRouteCode.Add(item);
-                    }
-                }
-                return BusesForRouteCode;
-            }
+            throw new System.Exception();
         }
     }
 }

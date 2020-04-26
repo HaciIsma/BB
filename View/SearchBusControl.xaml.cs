@@ -9,7 +9,7 @@ namespace BakuBus.View
 {
     public partial class SearchBusControl : UserControl
     {
-        public ObservableCollection<object> vs { get; set; } 
+        public List<object> vs = new List<object>();
         public SearchBusControl()
         {
             InitializeComponent();
@@ -20,14 +20,14 @@ namespace BakuBus.View
         public ICommand SearchCommand { get; set; }
 
         #region ComboBox AddItemList
-        public ObservableCollection<object> AddBusList
+        public List<object> AddBusList
         {
-            get { return (ObservableCollection<object>)GetValue(AddBusListProperty); }
+            get { return (List<object>)GetValue(AddBusListProperty); }
             set { SetValue(AddBusListProperty, value); }
         }
 
         public static readonly DependencyProperty AddBusListProperty =
-            DependencyProperty.Register("AddBusList", typeof(ObservableCollection<object>), typeof(SearchBusControl));
+            DependencyProperty.Register("AddBusList", typeof(List<object>), typeof(SearchBusControl));
 
         #endregion
 

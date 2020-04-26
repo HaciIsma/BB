@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BakuBus.View"
              mc:Ignorable="d" 
+             Name="SearchBus"
              d:DesignHeight="162" d:DesignWidth="450">
 
     <Grid Background="White">
@@ -15,7 +16,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Content="Line no" VerticalAlignment="Center" Padding="10" FontSize="18"/>
+        <Label Grid.Row="0" Content="Bus no" VerticalAlignment="Center" Padding="10" FontSize="18"/>
 
         <ComboBox Name="cmbBox" Grid.Row="1" Margin="10"  ItemsSource="{Binding vs}"/>
 
