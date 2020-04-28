@@ -23,6 +23,8 @@ namespace BakuBus.ViewModel
 
         private BakuBusService _busService;
 
+        private string BusNo;
+
         public MainViewModel()
         {
             Provider = new ApplicationIdCredentialsProvider(ConfigurationManager.AppSettings["ApiKey"]);
@@ -49,15 +51,21 @@ namespace BakuBus.ViewModel
 
         private void SearchCommandExecute(object param)
         {
-            var str = param as string;
-            Buses = new ObservableCollection<Bus>(_busService.GetAllBusesByRouteCode(str));
+            BusNo = param as string;
+            Buses = new ObservableCollection<Bus>(_busService.GetAllBusesByRouteCode(BusNo));
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
             Provider = new ApplicationIdCredentialsProvider(ConfigurationManager.AppSettings["ApiKey"]);
             _busService = new BakuBusService();
-            Buses = new ObservableCollection<Bus>(_busService.GetAllBuses());
+
+            if (BusNo == null)
+            {
+                BusNo = "General list";
+            }
+
+            Buses = new ObservableCollection<Bus>(_busService.GetAllBusesByRouteCode(BusNo));
         }
     }
 }

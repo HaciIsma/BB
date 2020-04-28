@@ -46,7 +46,7 @@ namespace BakuBus.Services
 
             if (routCode == "General list")
             {
-                return AllBuses;
+                return GetAllBuses();
             }
 
             foreach (var item in AllBuses)
