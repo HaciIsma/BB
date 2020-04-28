@@ -14,8 +14,6 @@ namespace BakuBus.Services
             var link = "https://www.bakubus.az/az/ajax/apiNew1";
             dynamic busses = JsonConvert.DeserializeObject(client.GetAsync(link).Result.Content.ReadAsStringAsync().Result);
 
-            List<Bus> buses = new List<Bus>();
-
             foreach (var item in busses.BUS)
             {
                 dynamic bus = item["@attributes"];
@@ -34,10 +32,10 @@ namespace BakuBus.Services
                     RouteName = bus["ROUTE_NAME"],
                 };
 
-                buses.Add(b);
+                AllBuses.Add(b);
             }
 
-            return buses;
+            return AllBuses;
         }
 
         public List<Bus> AllBuses { get; set; } = new List<Bus>();

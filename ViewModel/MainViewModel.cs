@@ -49,7 +49,8 @@ namespace BakuBus.ViewModel
 
         private void SearchCommandExecute(object param)
         {
-            Buses = new ObservableCollection<Bus>(_busService.GetAllBusesByRouteCode(param as string));
+            var str = param as string;
+            Buses = new ObservableCollection<Bus>(_busService.GetAllBusesByRouteCode(str));
         }
 
         private void Timer_Tick(object sender, EventArgs e)
