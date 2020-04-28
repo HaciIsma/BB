@@ -13,16 +13,16 @@ namespace BakuBus.Services
             var client = new HttpClient();
             var link = "https://www.bakubus.az/az/ajax/apiNew1";
             dynamic busses = JsonConvert.DeserializeObject(client.GetAsync(link).Result.Content.ReadAsStringAsync().Result);
-
+            
             List<Bus> buses = new List<Bus>();
-
+            
             foreach (var item in busses.BUS)
             {
                 dynamic bus = item["@attributes"];
                 string latitude = bus["LATITUDE"];
                 string longitude = bus["LONGITUDE"];
                 Location location = new Location(double.Parse(latitude.Replace(",", ".")), double.Parse(longitude.Replace(",", ".")));
-
+            
                 var b = new Bus()
                 {
                     DriverName = bus["DRIVER_NAME"],
@@ -33,7 +33,7 @@ namespace BakuBus.Services
                     RouteCode = bus["DISPLAY_ROUTE_CODE"],
                     RouteName = bus["ROUTE_NAME"],
                 };
-
+            
                 buses.Add(b);
             }
 

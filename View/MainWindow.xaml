@@ -19,6 +19,38 @@
 
     <Grid>
         <map:Map Grid.Row="1" Center="40.409264, 49.867092" ZoomLevel="10"  CredentialsProvider="{Binding Provider}" >
+
+            <map:MapItemsControl>
+                <Grid Background="White" Height="152" Width="450" Margin="0,0,1100,750">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Content="Bus no" VerticalAlignment="Center" Padding="10" FontSize="18" Grid.ColumnSpan="2" Margin="0,4,0,3"/>
+
+                    <ComboBox Grid.Row="1" Margin="10" Grid.ColumnSpan="2" />
+
+                    <Button Grid.Row="2" Background="Red" Width="96" Height="32" HorizontalAlignment="Right" Margin="0,10,10,9" Grid.ColumnSpan="2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="20"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0" Content="Search" Foreground="White"/>
+                            <Image Grid.Column="1" Source="/Resources/Lupa.png" Width="16" Height="16"/>
+                        </Grid>
+                    </Button>
+                </Grid>
+            </map:MapItemsControl>
+
             <map:MapItemsControl ItemsSource="{Binding Buses}">
                 <map:MapItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -49,7 +81,7 @@
                     </DataTemplate>
                 </map:MapItemsControl.ItemTemplate>
             </map:MapItemsControl>
-            
+
         </map:Map>
     </Grid>
 </Window>
