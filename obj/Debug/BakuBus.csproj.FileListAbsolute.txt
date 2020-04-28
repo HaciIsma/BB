@@ -20,5 +20,3 @@ C:\Users\HaciIsma\source\repos\BakuBus\BakuBus\obj\Debug\BakuBus.csproj.CopyComp
 C:\Users\HaciIsma\source\repos\BakuBus\BakuBus\obj\Debug\BakuBus.exe
 C:\Users\HaciIsma\source\repos\BakuBus\BakuBus\obj\Debug\BakuBus.pdb
 C:\Users\HaciIsma\source\repos\BakuBus\BakuBus\obj\Debug\BakuBus.csproj.Fody.CopyLocal.cache
-C:\Users\HaciIsma\source\repos\BakuBus\BakuBus\obj\Debug\View\SearchBusControl.g.cs
-C:\Users\HaciIsma\source\repos\BakuBus\BakuBus\obj\Debug\View\SearchBusControl.baml

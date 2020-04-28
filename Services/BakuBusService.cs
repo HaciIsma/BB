@@ -8,7 +8,6 @@ namespace BakuBus.Services
 {
     public class BakuBusService
     {
-        public List<Bus> BB { get; set; }
         public IEnumerable<Bus> GetAllBuses()
         {
             var client = new HttpClient();
@@ -37,13 +36,10 @@ namespace BakuBus.Services
 
                 buses.Add(b);
             }
-            BB = buses;
 
             return buses;
         }
 
-        
-        
         public IEnumerable<Bus> GetAllBusesByRouteCode(string routeCode)
         {
             throw new System.Exception();

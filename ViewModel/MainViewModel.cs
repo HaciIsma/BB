@@ -19,15 +19,11 @@ namespace BakuBus.ViewModel
 
         private BakuBusService _busService;
 
-        public List<Bus> BusList { get; set; }
-
         public MainViewModel()
         {
             Provider = new ApplicationIdCredentialsProvider(ConfigurationManager.AppSettings["ApiKey"]);
             _busService = new BakuBusService();
             Buses = new ObservableCollection<Bus>(_busService.GetAllBuses());
-
-            BusList = _busService.BB;
 
             var timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(10);
