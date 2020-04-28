@@ -42,18 +42,18 @@ namespace BakuBus.Services
 
         public List<Bus> AllBuses { get; set; } = new List<Bus>();
         public List<Bus> BusesForRouteCode { get; set; } = new List<Bus>();
-        public IEnumerable<Bus> GetAllBusesByRouteCode(string routeCode)
+        public IEnumerable<Bus> GetAllBusesByRouteCode(string routCode)
         {
             BusesForRouteCode.Clear();
 
-            if (routeCode == "General list")
+            if (routCode == "General list")
             {
                 return AllBuses;
             }
 
             foreach (var item in AllBuses)
             {
-                if (item.RouteCode == routeCode)
+                if (item.RouteCode == routCode)
                 {
                     BusesForRouteCode.Add(item);
                 }

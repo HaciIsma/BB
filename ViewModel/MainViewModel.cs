@@ -39,6 +39,7 @@ namespace BakuBus.ViewModel
             }
             BusesRouteCodes = buses.Distinct().ToList();
 
+
             var timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(10);
             timer.Tick += Timer_Tick;
