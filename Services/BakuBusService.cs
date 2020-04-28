@@ -3,6 +3,7 @@ using Microsoft.Maps.MapControl.WPF;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net.Http;
+using System;
 
 namespace BakuBus.Services
 {
@@ -12,7 +13,28 @@ namespace BakuBus.Services
         {
             var client = new HttpClient();
             var link = "https://www.bakubus.az/az/ajax/apiNew1";
-            dynamic busses = JsonConvert.DeserializeObject(client.GetAsync(link).Result.Content.ReadAsStringAsync().Result);
+            dynamic busses = default;
+
+            #region Request Check
+
+            bool check;
+            do
+            {
+                try
+                {
+                    check = default;
+                    busses = JsonConvert.DeserializeObject(client.GetAsync(link).Result.Content.ReadAsStringAsync().Result);
+                }
+                catch (Exception)
+                {
+                    check = true;
+                }
+            } while (check);
+
+            #endregion
+
+
+            
 
 
             foreach (var item in busses.BUS)
