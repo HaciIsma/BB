@@ -14,6 +14,7 @@ namespace BakuBus.Services
             var link = "https://www.bakubus.az/az/ajax/apiNew1";
             dynamic busses = JsonConvert.DeserializeObject(client.GetAsync(link).Result.Content.ReadAsStringAsync().Result);
 
+
             foreach (var item in busses.BUS)
             {
                 dynamic bus = item["@attributes"];
