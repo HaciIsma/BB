@@ -13,16 +13,16 @@ namespace BakuBus.Services
             var client = new HttpClient();
             var link = "https://www.bakubus.az/az/ajax/apiNew1";
             dynamic busses = JsonConvert.DeserializeObject(client.GetAsync(link).Result.Content.ReadAsStringAsync().Result);
-            
+
             List<Bus> buses = new List<Bus>();
-            
+
             foreach (var item in busses.BUS)
             {
                 dynamic bus = item["@attributes"];
                 string latitude = bus["LATITUDE"];
                 string longitude = bus["LONGITUDE"];
                 Location location = new Location(double.Parse(latitude.Replace(",", ".")), double.Parse(longitude.Replace(",", ".")));
-            
+
                 var b = new Bus()
                 {
                     DriverName = bus["DRIVER_NAME"],
@@ -33,16 +33,34 @@ namespace BakuBus.Services
                     RouteCode = bus["DISPLAY_ROUTE_CODE"],
                     RouteName = bus["ROUTE_NAME"],
                 };
-            
+
                 buses.Add(b);
             }
 
             return buses;
         }
 
+        public List<Bus> AllBuses { get; set; } = new List<Bus>();
+        public List<Bus> BusesForRouteCode { get; set; } = new List<Bus>();
         public IEnumerable<Bus> GetAllBusesByRouteCode(string routeCode)
         {
-            throw new System.Exception();
+            BusesForRouteCode.Clear();
+
+            if (routeCode == "General list")
+            {
+                return AllBuses;
+            }
+
+            foreach (var item in AllBuses)
+            {
+                if (item.RouteCode == routeCode)
+                {
+                    BusesForRouteCode.Add(item);
+                }
+            }
+
+            return BusesForRouteCode;
+
         }
     }
 }

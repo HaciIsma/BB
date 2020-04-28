@@ -35,9 +35,10 @@
 
                     <Label Grid.Row="0" Content="Bus no" VerticalAlignment="Center" Padding="10" FontSize="18" Grid.ColumnSpan="2" Margin="0,4,0,3"/>
 
-                    <ComboBox Grid.Row="1" Margin="10" Grid.ColumnSpan="2" />
+                    <ComboBox Name="cmbBox" Grid.Row="1" Margin="10" Grid.ColumnSpan="2" ItemsSource="{Binding Path=BusesRouteCodes}"/>
 
-                    <Button Grid.Row="2" Background="Red" Width="96" Height="32" HorizontalAlignment="Right" Margin="0,10,10,9" Grid.ColumnSpan="2">
+                    <Button Grid.Row="2" Background="Red" Width="96" Height="32" HorizontalAlignment="Right" Margin="0,10,10,9" Grid.ColumnSpan="2" 
+                            Command="{Binding SearchCommand}" CommandParameter="{Binding ElementName=cmbBox,Path=Text,Mode=TwoWay}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
