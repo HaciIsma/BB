@@ -20,9 +20,9 @@ namespace BakuBus.Services
             bool check;
             do
             {
+                check = default;
                 try
                 {
-                    check = default;
                     busses = JsonConvert.DeserializeObject(client.GetAsync(link).Result.Content.ReadAsStringAsync().Result);
                 }
                 catch (Exception)
@@ -67,9 +67,11 @@ namespace BakuBus.Services
         {
             BusesForRouteCode.Clear();
 
+            GetAllBuses();
+
             if (routCode == "General list")
             {
-                return GetAllBuses();
+                return AllBuses;
             }
 
             foreach (var item in AllBuses)
